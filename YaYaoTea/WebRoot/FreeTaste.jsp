@@ -4,18 +4,18 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <base href="<%=basePath%>">
     
     <title>免费领茶</title>
-     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no" name="viewport" />	
+	<meta name="pragma" content="no-cache">
+	<meta name="cache-control" content="no-cache">
+	<meta name="expires" content="0">    
+	<meta name="keywords" content="雅耀,广告,代理,服务,茶叶,茶艺,保险">
+	<meta name="description" content="雅耀（湖南）科技有限公司是一个线上线下结合形成一站式的综合性服务公司，业务涉及广泛，如广告，代理，茶叶，茶艺，保险，服务，活动等等">
 	<link rel="stylesheet" href="resource/css/weui.min.css">
 	<link rel="stylesheet" href="resource/css/jquery-weui.css">
 
@@ -23,8 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body >
 	<img alt="" src="resource/img/freeTaste.jpg" style="position: fixed;width: 100%;">
-  <div style="opacity:0.5;text-align: center; ">
-  <h1 style="color:#ccc;">喝好茶，上本真茶园！</h1>
+  <div style="opacity:0.5;text-align:center;">
+  <h1 style="color:red;">喝好茶，上本真茶园！</h1>
   <div style="color:red;">免费领取好茶，只为你的爱茶之心！</div>
   <div style="color:black;">新店开张，体验新茶，免费领取100克茶叶只需邮费25元。
           新店开张，体验黑茶的魅力，免费领取黑茶100克。
@@ -149,8 +149,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}
 		});
 		
+		}); 
+		/* // 使用 jQuery异步提交表单
+
+		$('#editRealMsgForm').submit(function() {
+		jQuery.ajax({
+		url:'editRealMsg.eri',
+		data:$('#editRealMsgForm').serialize(),
+		type:"POST",
+		beforeSend:function()
+		{  
+		$('#submitButton').hide();
+		$('#editRealMsgImg').show();
+		},
+		success:function()
+		{
+		$('#editRealMsgImg').hide();
+		$('#modifyButton').show();
+		$('#realName').attr("disabled","true");
+		$('#tel').attr("disabled","true");
+		}
 		});
-		
+		return false;
+		}); */
 	});
 	</script>
   </body>

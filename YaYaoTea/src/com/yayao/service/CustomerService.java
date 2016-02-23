@@ -1,5 +1,8 @@
 package com.yayao.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.yayao.bean.Customer;
 
 /**
@@ -16,4 +19,12 @@ public interface CustomerService {
 	 * 用户提交需求
 	 */
 	public void addCustomerContent(Customer customer);
+	/**
+	 * 查询10个客户
+	 */
+	public List<Customer> showCustomer(Map<String,Object> map);
+	/**
+	 * 修改订单状态
+	 */
+	public void updateCustomerIndex(Customer customer);
 }

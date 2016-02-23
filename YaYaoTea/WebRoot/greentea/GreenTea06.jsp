@@ -4,18 +4,18 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
   <head>
     <base href="<%=basePath%>">
     
     <title>品质鉴别</title>
-     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no" name="viewport" />	
+	<meta name="pragma" content="no-cache">
+	<meta name="cache-control" content="no-cache">
+	<meta name="expires" content="0">    
+	<meta name="keywords" content="雅耀,广告,代理,服务,茶叶,茶艺,保险">
+	<meta name="description" content="雅耀（湖南）科技有限公司是一个线上线下结合形成一站式的综合性服务公司，业务涉及广泛，如广告，代理，茶叶，茶艺，保险，服务，活动等等">
 	<link rel="stylesheet" href="resource/css/weui.min.css">
 	<link rel="stylesheet" href="resource/css/jquery-weui.css">
 	<style type="text/css">

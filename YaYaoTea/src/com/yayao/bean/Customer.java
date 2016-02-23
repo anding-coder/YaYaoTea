@@ -32,13 +32,15 @@ public class Customer implements Serializable {
 	
 	private String referTime;
 	
+	private Integer orderStatus;
 	public Customer() {
 		super();
 	}
 
 	
 	public Customer(Integer id, String userName, String cellPhone,
-			String email, String teaType, String totaladdress,String referTime) {
+			String email, String teaType, String totaladdress,String referTime
+			,Integer orderStatus) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -47,6 +49,7 @@ public class Customer implements Serializable {
 		this.teaType = teaType;
 		this.totaladdress = totaladdress;
 		this.referTime=referTime;
+		this.orderStatus=orderStatus;
 	}
 
 
@@ -110,6 +113,16 @@ public class Customer implements Serializable {
 
 	public void setReferTime(String referTime) {
 		this.referTime = referTime;
+	}
+
+
+	public Integer getOrderStatus() {
+		return orderStatus;
+	}
+
+
+	public void setOrderStatus(Integer orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	

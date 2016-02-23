@@ -1,13 +1,19 @@
 package com.yayao.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.Validator;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -33,13 +39,54 @@ public class CustomerController {
 	private CustomerService customerService;
 	@Resource
 	Validator validator;
-	
-	@RequestMapping(value="/selectNewsByID",method=RequestMethod.POST )
-	public String selectNewsByID(@RequestParam("customerID")Integer id,ModelMap model){
+	/**
+	 * 查询单个客户
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/selectCustomerByID",method=RequestMethod.POST )
+	public ResponseEntity<Customer> selectCustomerByID(@RequestParam("customerID")Integer id,ModelMap model){
 		Customer customer = customerService.selectCustomerByID(id);
 		model.addAttribute("customer", customer);
-		return "foreground/contactUS";
+		//session.setAttribute("customer", customer);
+		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 		
+	}
+	/**
+	 * 每次查询10个固定客户
+	 * @param firstid
+	 * @param sizeid
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/showCustomer",method=RequestMethod.POST )
+	public ResponseEntity<List<Customer>> showCustomer(@RequestParam("firstid")Integer firstid,@RequestParam("sizeid")Integer sizeid,ModelMap model){
+		Map<String, Object> map=new HashMap<String,Object>();
+		map.put("firstid", firstid);
+		map.put("sizeid", sizeid);
+		List<Customer> list = customerService.showCustomer(map);
+		model.addAttribute("customerList", list);
+		//session.setAttribute("customerList", list);
+		return new ResponseEntity<List<Customer>>(list,HttpStatus.OK);
+		
+	}
+	
+	@RequestMapping(value="/updateCustomerIndex",method=RequestMethod.POST )
+	public @ResponseBody Customer updateCustomerIndex(@RequestParam("id")Integer id,@RequestParam("orderStatus")String orderStatus,ModelMap model){
+		Customer customer = customerService.selectCustomerByID(id);
+		if(orderStatus.equals("新订单")){
+			customer.setOrderStatus(0);
+		}else if(orderStatus.equals("已经发货")){
+			customer.setOrderStatus(1);
+		}else if(orderStatus.equals("交易完成")){
+			customer.setOrderStatus(2);
+		}
+		
+		customerService.updateCustomerIndex(customer);
+		model.addAttribute("customer", customer);
+		//session.setAttribute("customerList", list);
+		return customer;
 	}
 	/*同步提交
 	 * @RequestMapping(value="/addCustomerContent",method=RequestMethod.POST )
@@ -57,13 +104,11 @@ public class CustomerController {
 		
 	}*/
 	/**
-	 * 异步提交
+	 * 增加客户
+	 * @param customer
+	 * @param result
+	 * @return
 	 */
-	/*@RequestMapping(value="/addCustomerContent",method=RequestMethod.POST)
-	public ResponseEntity<Customer> addCustomerContent(@ModelAttribute Customer customer){
-			customerService.addCustomerContent(customer);
-			return new ResponseEntity<Customer>(customer, HttpStatus.OK);
-		}*/
 	@RequestMapping(value="/addCustomerContent",method=RequestMethod.POST)
 	public @ResponseBody Customer addCustomerContent(@Valid @ModelAttribute Customer customer,BindingResult result){
 		if(result.hasErrors()){
@@ -71,6 +116,7 @@ public class CustomerController {
 			return null;
 		}
 		customer.setReferTime(DateUtil.getCurrentTime());
+		customer.setOrderStatus(0);
 		customerService.addCustomerContent(customer);
 		return  customer;
 	}

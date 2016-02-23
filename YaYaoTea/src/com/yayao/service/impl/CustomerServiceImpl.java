@@ -1,5 +1,8 @@
 package com.yayao.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -29,5 +32,18 @@ public class CustomerServiceImpl implements CustomerService {
 	public void addCustomerContent(Customer customer) {
 		customerDao.addCustomerContent(customer);
 	}
+	/**
+	 * 查询10个客户
+	 */
+	public List<Customer> showCustomer(Map<String,Object>map){
+		List<Customer> list = customerDao.showCustomer(map);
+		return list;
+	}
+	/**
+	 * 修改订单状态
+	 */
+	public void updateCustomerIndex(Customer customer) {
+		customerDao.updateCustomerIndex(customer);
+	};
 	
 }

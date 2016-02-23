@@ -1,5 +1,8 @@
 package com.yayao.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,6 +41,21 @@ public class CustomerDaoImpl implements CustomerDao {
 	 */
 	public void addCustomerContent(Customer customer) {
 		sqlSession.insert("com.yayao.dao.CustomerDao.addCustomerContent",customer);
+	}
+	/**
+	 * 查询10个客户
+	 */
+	public List<Customer> showCustomer(Map<String,Object> map) {
+		
+		List<Customer> list = sqlSession.selectList("com.yayao.dao.CustomerDao.showCustomer", map);
+		
+		return list;
+	}
+	/**
+	 * 修改订单状态
+	 */
+	public void updateCustomerIndex(Customer customer) {
+		sqlSession.update("com.yayao.dao.CustomerDao.updateCustomerIndex", customer);
 	}
 
 }
