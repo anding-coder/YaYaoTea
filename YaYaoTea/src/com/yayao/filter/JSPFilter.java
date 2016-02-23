@@ -46,7 +46,7 @@ public class JSPFilter implements Filter {
 	//servletRequest.getRequestDispatcher("/WEB-INF"+path).forward(request, response);
 }else*/
 	if (path.indexOf("resource")==-1&&(path.indexOf(".")>-1||path.indexOf("\\")>-1)){
-	if(path.indexOf(".ico")!=-1){
+	if(path.indexOf(".ico")!=-1||path.indexOf(".txt")!=-1){
 		chain.doFilter(request, response);
 	}
 		//对请求过滤
