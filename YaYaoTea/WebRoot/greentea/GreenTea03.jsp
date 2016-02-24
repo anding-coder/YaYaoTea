@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
 </article>
 	
-	<script src="resource/js/jquery-2.1.4.js"></script>
+	<script src="resource/js/jQuery1.11.3.js"></script>
 	<script src="resource/js/jquery-weui.js"></script>
   </body>
 </html>
