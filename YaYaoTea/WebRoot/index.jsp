@@ -108,7 +108,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	//初始化显示客户方法
         	function init(firstid,sizeid){
             $.ajax({
-                 url:"http://nieyue.5166.info/YaYaoTea/showCustomer",
+                 //url:"http://nieyue.5166.info/YaYaoTea/showCustomer",
+                 url:"showCustomer",
                  type:"POST",
                  data:{
                 	 firstid:firstid,
@@ -164,7 +165,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         		var orderStatusSelect=$("#orderStatusSelect").val().trim();
 	         		//alert(orderStatusSelect);
 	         		 $.ajax({
-	                     url:"http://nieyue.5166.info/YaYaoTea/updateCustomerIndex",
+	                     //url:"http://nieyue.5166.info/YaYaoTea/updateCustomerIndex",
+	                     url:"updateCustomerIndex",
 	                     type:"POST",
 	                     data:{
 	                    	id:id,
