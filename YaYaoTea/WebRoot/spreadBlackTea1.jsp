@@ -77,5 +77,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </div>
 <script src="resource/js/jQuery1.11.3.js"></script>
 <!-- 代码统计 -->
-<script src="http://s95.cnzz.com/z_stat.php?id=1257651476&web_id=1257651476" language="JavaScript"></script>  </body>
+<script src="http://s95.cnzz.com/z_stat.php?id=1257651476&web_id=1257651476" language="JavaScript"></script> 
+ </body>
 </html>
