@@ -26,15 +26,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body >
  <button id="fenxiang" >分享</button>
+ 
+ <button id="fenxiang" >分享</button>
 <script src="resource/js/jQuery1.11.3.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
-//var url2=encodeURIComponent(url1);
 $.ajax({
-	url:"http://nieyue.6655.la/YaYaoTea/token/connection?url="+location.href.split('#')[0],
+	url:"token/connection?url="+encodeURIComponent(location.href.split('#')[0]),
 	type:"GET",
 	success:function(data){
-	alert(data);
+	//alert(data);
 	//alert( $.parseJSON(data).timestamp);
 	var appid=$.parseJSON(data).appid;
 	var timestamp=$.parseJSON(data).timestamp;
@@ -43,7 +44,7 @@ $.ajax({
 	//alert(appid+timestamp+nonceStr+signature)
 	//alert(signature);
   wx.config({
-    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
     appId: appid, // 必填，公众号的唯一标识
     timestamp: timestamp, // 必填，生成签名的时间戳
     nonceStr: nonceStr, // 必填，生成签名的随机串
@@ -88,7 +89,7 @@ $.ajax({
               ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 });  
 }});
- /* wx.checkJsApi({
+  /* wx.checkJsApi({
     jsApiList: [
 'chooseImage'
     ],
@@ -96,29 +97,31 @@ $.ajax({
       //alert(JSON.stringify(res));
       alert("sdf");
     }
-  }); */ 
-$('#fenxiang').click(function () {
+  });  */
+  
+  wx.ready(function(){
     wx.onMenuShareAppMessage({
       title: '本真茶园',
-      desc: '快来免费领取红、绿、黑茶！',
-      link: 'http://www.tea18.cn/spreadBlackTea1',
-      imgUrl: 'http://www.tea18.cn/resource/img/spread/1.jpg',
+      desc: '快来免费领取黑茶！',
+     link: location.href.split('#')[0],
+     // link: 'http://nieyue.6655.la/YaYaoTea/spreadBlackTea1',
+      imgUrl: '<%=basePath%>resource/img/spread/1.jpg',
       trigger: function (res) {
         // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
-        alert('用户点击发送给朋友');
+       // alert('用户点击发送给朋友');
       },
       success: function (res) {
-        alert('已分享');
+        //alert('已分享');
       },
       cancel: function (res) {
-        alert('已取消');
+        //alert('已取消');
       },
       fail: function (res) {
         alert(JSON.stringify(res));
       }
     });
-    alert('已注册获取“发送给朋友”状态事件');
-  });
+    
+	});
 </script>
 <!-- 代码统计 -->
 <!-- <script src="http://s95.cnzz.com/z_stat.php?id=1257651476&web_id=1257651476" language="JavaScript"></script> 

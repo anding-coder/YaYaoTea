@@ -30,7 +30,7 @@ public class WeiXinController {
 	 */
 	@RequestMapping(value="/connection",method=RequestMethod.GET )
 	public ResponseEntity<String> connectionWeiXin(@RequestParam("url")String url){
-		String json = PastUtil.getParam("wx0cfdb598d619807e", "d4624c36b6795d1d99dcf0547af5443d",url);
+		String json = PastUtil.getParam("wxf70db1421d99a52b", "ba869f32f7b6fff6ab43b8b5ca864448",url);
 		return new ResponseEntity<String>(json,HttpStatus.OK);
 		
 	}
